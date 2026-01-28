@@ -1,5 +1,4 @@
 use super::system_tables::SystemTable;
-use enum_as_inner::EnumAsInner;
 use spacetimedb_lib::db::raw_def::{v9::RawSql, RawIndexDefV8};
 use spacetimedb_primitives::{ColId, ColList, IndexId, SequenceId, TableId, ViewId};
 use spacetimedb_sats::buffer::DecodeError;
@@ -13,7 +12,7 @@ use spacetimedb_table::{
 };
 use thiserror::Error;
 
-#[derive(Error, Debug, EnumAsInner)]
+#[derive(Error, Debug)]
 pub enum DatastoreError {
     #[error("LibError: {0}")]
     Lib(#[from] LibError),
@@ -61,7 +60,7 @@ pub enum ViewError {
     SerializeArgs,
 }
 
-#[derive(Error, Debug, EnumAsInner)]
+#[derive(Error, Debug)]
 pub enum TableError {
     #[error("Table with name `{0}` start with 'st_' and that is reserved for internal system tables.")]
     System(Box<str>),
