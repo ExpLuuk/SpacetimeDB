@@ -923,7 +923,6 @@ fn extract_description<'scope>(
     replica_ctx: &ReplicaContext,
 ) -> Result<RawModuleDef, DescribeError> {
     run_describer(
-        //TODO(shub): make it work with `DESCRIBE_MODULE_DUNDER_V10`
         DESCRIBE_MODULE_DUNDER,
         |a, b, c| log_traceback(replica_ctx, a, b, c),
         || {
